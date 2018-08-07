@@ -5,6 +5,7 @@ import { Container, Header, Content, Card, Item, Input, CardItem, Title, Thumbna
 import  FooterC from "./src/components/Footer";
 import  Activity from "./src/components/Activity";
 import  HeaderTitle from "./src/components/HeaderTitle";
+import  Categories from "./src/components/Categories";
 
 
 export default class App extends Component {
@@ -21,7 +22,7 @@ export default class App extends Component {
             <Icon name="ios-search" />
             <Input placeholder="Search Activities" />
           </Item>
-        <Activity />
+        <Categories />
         <Activity />
         <Activity />
         <Activity />
