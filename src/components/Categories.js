@@ -55,7 +55,7 @@ export default class Categories extends Component {
             </Card>
           );
         }}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
       />
     );
   }

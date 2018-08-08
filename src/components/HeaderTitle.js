@@ -6,7 +6,7 @@ import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, T
     render() {
         return (
           <Body>
-            <Title>Activities</Title>
+            <Title>Upcoming Activities</Title>
           </Body>
         );
     }

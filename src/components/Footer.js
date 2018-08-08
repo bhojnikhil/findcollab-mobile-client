@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
  class FooterC extends Component {
     render() {
+      const { navigate } = this.props.navigation;
         return (
         <Footer>
           <FooterTab>
-            <Button vertical active>
+            <TouchableOpacity onPress={() => navigate('Home')}>
+            <Button vertical >
               <Icon active name="paper" />
               <Text>Activities</Text>
             </Button>
-            <Button vertical>
+            </TouchableOpacity>
+            <Button vertical
+            onPress={() => this.props.navigation.navigate('Explore')}>
               <Icon name="navigate" />
               <Text>Explore</Text>
             </Button>
