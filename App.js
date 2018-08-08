@@ -7,6 +7,7 @@ import  FooterC from "./src/components/Footer";
 import  Activity from "./src/components/Activity";
 import  HeaderTitle from "./src/components/HeaderTitle";
 import  Categories from "./src/components/Categories";
+import axios from 'axios';
 
 
 
@@ -14,8 +15,8 @@ class Explore extends Component {
   render() {
     return (
       <Container>
-        <Header searchBar rounded>
-            <Title>Explore</Title>
+         <Header searchBar rounded>
+        <HeaderTitle title={"Explore Activities"} />
         </Header>
         <Content searchBar rounded>
         <Item>
@@ -63,7 +64,9 @@ class DetailsScreen extends React.Component {
   render() {
     return (
       <Container>
-        <Header />
+         <Header searchBar rounded>
+        <HeaderTitle title={"Detailed"} />
+        </Header>
         <Content>
           <Card style={{flex: 0}}>
             <CardItem>
@@ -101,22 +104,50 @@ class DetailsScreen extends React.Component {
 
 class UserProfile extends React.Component {
 
+  state = {
+    user : {
+            "email": "shashiessp@gmail.com",
+            "name": "Shashi Essp",
+            "phone": "5122168404",
+            "skills": [
+                "workout",
+                "Music",
+                "Fitness"
+            ],
+            "bio": "Computer Science Graduate Student",
+            "profile_image_url": "https://pbs.twimg.com/profile_images/715545037325512705/16K2-oZE_bigger.jpg",
+            "points_earned": 200,
+            "points_redeemed": 150
+        }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:8000/users/1/')
+      .then(res => {
+        const user = res.data;
+        this.setState({ user });
+      })
+  }
+
+
   render() {
-    const uri = "https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg";
+
     return (
       <Container>
-        <Header />
+         <Header searchBar rounded>
+        <HeaderTitle title={"Profile"} />
+        </Header>
         <Content>
-          <Thumbnail large source={{uri: uri}} />
-        <Text>Bruce Wayne</Text>
+          <Thumbnail large source={{uri: this.state.user.profile_image_url}} />
+        <Text>{this.state.user.name}</Text>
         <Text>Interests</Text>
         <Tags
-                    initialTags={["Mobile Development", "Fitness", "Music", "Arts", "Machine Learning"]}
+                    initialTags={this.state.user.skills}
                     inputStyle={{ backgroundColor: "white" }}
                   />
 
-                  <Text>Points Earned: 289 </Text>
-                  <Text>Points Redeemed: 80 </Text>
+                  <Text>Points Earned: {this.state.user.points_earned} </Text>
+                  <Text>Points Redeemed: {this.state.user.points_redeemed} </Text>
         </Content>
         <Footer>
           <FooterTab>
@@ -156,10 +187,7 @@ class Settings extends React.Component {
     return (
 <Container>
          <Header searchBar rounded>
-          <Item>
-            <Icon name="ios-search" />
-            <Input placeholder="Search" />      
-          </Item>  
+        <HeaderTitle title={"Settings"} />
         </Header>
         
         
@@ -255,7 +283,7 @@ class Home extends Component {
       <Container>
         <Header searchBar rounded>
 
-        <HeaderTitle />
+        <HeaderTitle title={"Upcoming Activities"} />
 
         </Header>
         <Content searchBar rounded>

@@ -6,7 +6,7 @@ import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, T
     render() {
         return (
           <Body>
-            <Title>Upcoming Activities</Title>
+            <Title>{this.props.title}</Title>
           </Body>
         );
     }
