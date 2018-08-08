@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, FlatList } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { Container, Header, ListItem, Switch, Content, Card, Footer, FooterTab, Item, Input, CardItem, Title, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import Tags from "react-native-tags";
 import  FooterC from "./src/components/Footer";
 import  Activity from "./src/components/Activity";
+import  Post from "./src/components/ActivityPosts";
 import  HeaderTitle from "./src/components/HeaderTitle";
 import  Categories from "./src/components/Categories";
 import axios from 'axios';
@@ -26,9 +27,9 @@ class Explore extends Component {
           <Text>Featured Categories: </Text>
         <Categories />
           <Text>Recommanded Posts: </Text>
-        <Activity />
-        <Activity />
-        <Activity />
+        <Post />
+        <Post />
+        <Post />
         </Content>
        <Footer>
           <FooterTab>
@@ -278,17 +279,39 @@ class Settings extends React.Component {
 
 
 class Home extends Component {
+
+  state = {
+    activities:[]
+  };
+
+  componentDidMount() {
+    axios.get('http://localhost:8000/activities/')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+      })
+  }
+
   render() {
     return (
       <Container>
         <Header searchBar rounded>
 
-        <HeaderTitle title={"Upcoming Activities"} />
+        <HeaderTitle title={"Your Activities"} />
 
         </Header>
         <Content searchBar rounded>
 
-        <Activity />
+      <FlatList
+        horizontal
+        data={this.state.activities}
+        renderItem={({ item: rowData }) => {
+          return (
+            <Activity activity={rowData} />
+          );
+        }}
+        keyExtractor={(item, id) => id.toString()}
+      />
 
         </Content>
        <Footer>

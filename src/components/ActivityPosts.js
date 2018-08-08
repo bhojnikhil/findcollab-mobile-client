@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
- class Activity extends Component {
+ class Post extends Component {
     render() {
         return (
           <Card style={{ borderRadius: 12 }}>
             <CardItem header bordered style={{ borderTopLeftRadius: 12, borderTopRightRadius: 12 }}>
               <Left>
-                <Thumbnail source={{uri: this.props.activity.activity.created_by.profile_image_url}} />
+                <Thumbnail source={{uri: ''}} />
                 <Body>
-                  <Text>{this.props.activity.activity.title}</Text>
+                  <Text>title</Text>
                   <Text note>GeekyAnts</Text>
                 </Body>
               </Left>
@@ -22,11 +22,11 @@ import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, T
               <Left>
                 <Button transparent>
                   <Icon active name="thumbs-up" />
-                  <Text>Points: {this.props.activity.points }</Text>
+                  <Text>Points: 10}</Text>
                 </Button>
               </Left>
               <Right>
-                <Text>Date: {this.props.activity.created }</Text>
+                <Text>Date: 10</Text>
               </Right>
             </CardItem>
           </Card>
@@ -34,4 +34,4 @@ import { Container, Header, Footer, FooterTab, Content, Card, CardItem, Title, T
     }
 }
 
-export default Activity;
+export default Post;
