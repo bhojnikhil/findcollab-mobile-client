@@ -218,20 +218,25 @@ class Settings extends React.Component {
 
         <Footer>
           <FooterTab>
-            <Button vertical active>
-              <Icon name="ios-people" />
+            <Button vertical 
+                          onPress={() => this.props.navigation.navigate('Home')}>
+              <Icon active name="paper"/>
               <Text>Activities</Text>
             </Button>
-            <Button vertical>
-              <Icon active name="jet" />
+            <Button vertical
+              onPress={() => this.props.navigation.navigate('Explore')}>
+              <Icon name="navigate" />
               <Text>Explore</Text>
             </Button>
-            <Button vertical>
+            <Button vertical 
+              onPress={() => this.props.navigation.navigate('Profile')}>
               <Icon name="person" />
               <Text>Profile</Text>
             </Button>
-            <Button vertical>
-              <Icon name="ios-settings" />
+            <Button vertical active
+                          onPress={() => this.props.navigation.navigate('Settings')}>
+
+              <Icon name="settings" />
               <Text>Settings</Text>
             </Button>
           </FooterTab>
